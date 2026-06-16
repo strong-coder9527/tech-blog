@@ -23,13 +23,13 @@ npm run preview
 当前配置按项目页准备，默认仓库名为 `tech-blog`，上线地址形如：
 
 ```text
-https://xiaoajie9527.github.io/tech-blog/
+https://strong-coder9527.github.io/tech-blog/
 ```
 
 需要上线时：
 
-1. 确认 `_config.yml` 里的 `url` 是 `https://xiaoajie9527.github.io/tech-blog`。
-2. 推送本目录内容到 `https://github.com/xiaoajie9527/tech-blog.git`。
+1. 确认 `_config.yml` 里的 `url` 是 `https://strong-coder9527.github.io/tech-blog`。
+2. 推送本目录内容到 `git@github-strong:strong-coder9527/tech-blog.git`。
 3. 进入仓库 `Settings -> Pages`，把 `Source` 选为 `GitHub Actions`。
 4. 选择后通常会自动生效；随后推送到 `main` 分支，`.github/workflows/pages.yml` 会自动构建并发布 `public/`。
 

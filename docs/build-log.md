@@ -59,7 +59,8 @@
 ### 上线准备
 
 - 本地执行 `npm run clean && npm run build` 通过。
-- 升级 GitHub Pages workflow，使用 `actions/configure-pages@v5` 和 `actions/upload-pages-artifact@v4`。
+- 调整 GitHub Pages workflow：曾加入 `actions/configure-pages@v5`，后因首次部署会触发 Pages 未启用错误而移除；保留 `actions/upload-pages-artifact@v4` 和 `actions/deploy-pages@v4`。
 - 新增 `docs/deploy-maintenance.md`，记录首次上线、日常发布、分类标签、技术栈地图、主题和依赖维护流程。
-- GitHub 远端仓库为 `https://github.com/xiaoajie9527/tech-blog.git`。
-- 将 `_config.yml` 的站点地址修正为 `https://xiaoajie9527.github.io/tech-blog`，避免误用 GitHub 仓库地址。
+- GitHub 远端仓库为 `git@github-strong:strong-coder9527/tech-blog.git`。
+- 将 `_config.yml` 的站点地址修正为 `https://strong-coder9527.github.io/tech-blog`，避免误用 GitHub 仓库地址。
+- 移除 workflow 中首次部署容易失败的 `actions/configure-pages` 步骤，保留 Hexo 构建、Pages artifact 上传和 `deploy-pages` 部署。

@@ -22,14 +22,14 @@
 ```text
 仓库名：tech-blog
 默认分支：main
-上线地址：https://xiaoajie9527.github.io/tech-blog/
+上线地址：https://strong-coder9527.github.io/tech-blog/
 本地预览：http://localhost:4000/tech-blog/
 ```
 
 Hexo 相关配置在 `_config.yml`：
 
 ```yaml
-url: https://xiaoajie9527.github.io/tech-blog
+url: https://strong-coder9527.github.io/tech-blog
 root: /tech-blog/
 ```
 
@@ -111,7 +111,7 @@ tech-blog
 当前仓库远端地址：
 
 ```text
-https://github.com/xiaoajie9527/tech-blog.git
+git@github-strong:strong-coder9527/tech-blog.git
 ```
 
 ## 4. 填真实站点 URL
@@ -119,7 +119,7 @@ https://github.com/xiaoajie9527/tech-blog.git
 打开 `_config.yml`，确认：
 
 ```yaml
-url: https://xiaoajie9527.github.io/tech-blog
+url: https://strong-coder9527.github.io/tech-blog
 ```
 
 `root` 保持：
@@ -189,6 +189,8 @@ Source: GitHub Actions
 
 这时不要点 GitHub 推荐的 `Configure` 模板，也不需要再创建新的 workflow。本仓库已经有自己的 `.github/workflows/pages.yml`。
 
+如果第一次 Actions 报 `Get Pages site failed`，通常是 workflow 里用了 `actions/configure-pages`，但仓库 Pages 还没完成启用导致的。本项目不需要这个步骤，当前 workflow 已经去掉它，只保留 Hexo 构建、上传 artifact 和部署。
+
 只要 `main` 分支有 push，`.github/workflows/pages.yml` 会自动：
 
 1. checkout 源码。
@@ -211,7 +213,7 @@ Actions -> Pages
 成功后访问：
 
 ```text
-https://xiaoajie9527.github.io/tech-blog/
+https://strong-coder9527.github.io/tech-blog/
 ```
 
 第一次部署可能需要等几十秒到几分钟。
@@ -489,14 +491,13 @@ npm run build
 截至 2026-06-16，本机状态：
 
 - 本地构建通过。
-- Git 远端已经配置为 `https://github.com/xiaoajie9527/tech-blog.git`。
-- 本机没有 `gh` CLI，但可以用 Git HTTPS remote 推送。
-- SSH 登录 GitHub 当前不可用：`Permission denied (publickey)`，所以继续使用 HTTPS remote。
-- `_config.yml` 的 `url` 应为 `https://xiaoajie9527.github.io/tech-blog`。
+- Git 远端已经配置为 `git@github-strong:strong-coder9527/tech-blog.git`。
+- 本机没有 `gh` CLI，但当前 SSH remote 已经可以推送到 `strong-coder9527/tech-blog`。
+- `_config.yml` 的 `url` 应为 `https://strong-coder9527.github.io/tech-blog`。
 
 因此下一步需要：
 
 1. 提交并推送当前修正。
 2. 在 GitHub 仓库的 `Actions` 标签页查看 `Pages` workflow 是否运行成功。
 3. 如果没有自动运行，可以进入 `Actions -> Pages -> Run workflow` 手动触发一次。
-4. 成功后访问 `https://xiaoajie9527.github.io/tech-blog/`。
+4. 成功后访问 `https://strong-coder9527.github.io/tech-blog/`。
