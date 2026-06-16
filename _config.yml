@@ -78,6 +78,8 @@ category_map:
   软路由: soft-router
   PassWall: passwall
   OpenWrt: openwrt
+  IOS逆向: IOS逆向
+  Frida: frida
 tag_map:
   GitHub Pages: github-pages
   Hermes Agent: hermes-agent
@@ -85,6 +87,8 @@ tag_map:
   Extroot: extroot
   磁盘扩容: disk-expansion
   PassWall: passwall
+  IOS逆向: IOS逆向
+  Frida: frida
   DNS: dns
   WebRTC: webrtc
   节点巡检: node-probe
