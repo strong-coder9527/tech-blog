@@ -1,5 +1,5 @@
 ---
-title: PassWall 零泄露配置与故障排查手册
+title: frida问题汇总（持续更新）
 date: 2026-06-05 01:00:00
 categories:
   - 逆向
