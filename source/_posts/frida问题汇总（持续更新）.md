@@ -6,11 +6,8 @@ categories:
   - IOS逆向
   - Frida
 tags:
-  - PassWall
-  - OpenWrt
-  - DNS
-  - WebRTC
-  - 故障排查
+  - IOS逆向
+  - Frida
 ---
 
 ### 0x01 Process terminated
