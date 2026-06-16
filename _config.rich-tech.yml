@@ -1,0 +1,21 @@
+menu:
+  首页: /
+  技术栈: /tech-stack
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  关于: /about
+
+subtitle: 记录安全研究、工程实践和个人知识系统
+excerpt_link: 阅读全文
+
+sidebar: right
+widgets:
+  - category
+  - tag
+  - recent_posts
+  - archive
+
+archive_type: monthly
+show_count: false
+recent_posts_limits: 5
