@@ -1,0 +1,17 @@
+<% var utterances = theme.utterances || {}; %>
+<% if (post.comments !== false && utterances.enable && utterances.repo){ %>
+  <section id="comments" class="comments comments-utterances">
+    <div class="comments-inner">
+      <h2 class="comments-title">评论</h2>
+      <p class="comments-note">评论由 GitHub Issues 驱动。登录 GitHub 后即可留言，首次使用前需要仓库安装 Utterances App。</p>
+      <script src="https://utteranc.es/client.js"
+        repo="<%- utterances.repo %>"
+        issue-term="<%- utterances.issue_term || 'pathname' %>"
+        <% if (utterances.label){ %>label="<%- utterances.label %>"<% } %>
+        theme="<%- utterances.theme || 'github-light' %>"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+  </section>
+<% } %>

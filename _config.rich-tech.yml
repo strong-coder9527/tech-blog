@@ -19,3 +19,10 @@ widgets:
 archive_type: monthly
 show_count: false
 recent_posts_limits: 5
+
+utterances:
+  enable: true
+  repo: strong-coder9527/tech-blog
+  issue_term: pathname
+  label: comment
+  theme: github-light

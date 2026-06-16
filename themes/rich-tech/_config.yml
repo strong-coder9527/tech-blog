@@ -61,6 +61,13 @@ show_count: false
 # How many posts display in Home page.
 recent_posts_limits: 5
 
+utterances:
+  enable: true
+  repo: strong-coder9527/tech-blog
+  issue_term: pathname
+  label: comment
+  theme: github-light
+
 # ===============
 # Miscellaneous
 # ===============

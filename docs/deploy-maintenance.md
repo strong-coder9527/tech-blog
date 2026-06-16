@@ -374,7 +374,61 @@ themes/rich-tech/source/css/_partial/rich-polish.styl
 - 主题样式统一放到 `rich-polish.styl`，方便后面迁移。
 - 改主题后必须 `npm run build` 验证。
 
-## 12. 依赖维护
+## 12. 评论系统维护
+
+当前评论系统使用 Utterances：
+
+```text
+https://utteranc.es/
+```
+
+配置位置：
+
+```text
+_config.rich-tech.yml
+themes/rich-tech/_config.yml
+themes/rich-tech/layout/_partial/comments.ejs
+```
+
+当前配置：
+
+```yaml
+utterances:
+  enable: true
+  repo: strong-coder9527/tech-blog
+  issue_term: pathname
+  label: comment
+  theme: github-light
+```
+
+工作方式：
+
+- 每篇文章对应 GitHub 仓库里的一个 Issue。
+- 读者需要登录 GitHub 才能评论。
+- 评论数据保存在 `strong-coder9527/tech-blog` 的 Issues 里。
+- 管理评论就是管理 GitHub Issues，可以关闭、删除、锁定或编辑。
+
+首次启用还需要在 GitHub 上安装 Utterances App：
+
+```text
+https://github.com/apps/utterances
+```
+
+安装时选择：
+
+```text
+Only select repositories -> strong-coder9527/tech-blog
+```
+
+如果没有安装，文章页会加载评论脚本，但评论区无法正常创建 Issue。
+
+单篇文章如果不想显示评论，在文章 front matter 里加：
+
+```yaml
+comments: false
+```
+
+## 13. 依赖维护
 
 查看过期依赖：
 
@@ -405,7 +459,7 @@ npm run build
 
 确认 `package-lock.json` 变化后提交。
 
-## 13. 常见故障
+## 14. 常见故障
 
 ### 页面 404
 
@@ -461,7 +515,17 @@ npm run build
 
 分类和标签不是在 `_config.yml` 里创建的，而是在文章 front matter 里使用后才出现。
 
-## 14. 建议维护节奏
+### 评论区不显示或提示仓库未安装
+
+检查：
+
+- 仓库是否是 public。
+- 仓库 Issues 是否启用。
+- 是否安装了 Utterances App。
+- `utterances.repo` 是否是 `strong-coder9527/tech-blog`。
+- 文章 front matter 是否写了 `comments: false`。
+
+## 15. 建议维护节奏
 
 每次写文章：
 
@@ -486,7 +550,7 @@ npm run build
 - 检查图片和外链是否失效。
 - 备份 Obsidian 到博客的来源链路。
 
-## 15. 当前机器状态
+## 16. 当前机器状态
 
 截至 2026-06-16，本机状态：
 

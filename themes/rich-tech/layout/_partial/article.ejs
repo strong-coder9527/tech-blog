@@ -24,6 +24,9 @@
     </div>
     <footer class="article-footer">
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= __('share') %></span></a>
+      <% if (post.comments !== false && theme.utterances && theme.utterances.enable && theme.utterances.repo){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link"><span class="fa fa-comment">评论</span></a>
+      <% } %>
       <% if (post.comments && theme.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><span class="fa fa-comment"><%= __('comment') %></span></a>
       <% } %>
@@ -38,6 +41,7 @@
   </div>
   <% if (!index){ %>
     <%- partial('post/nav') %>
+    <%- partial('comments', {post: post}) %>
   <% } %>
 </article>
 
