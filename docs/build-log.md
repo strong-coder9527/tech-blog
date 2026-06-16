@@ -61,4 +61,5 @@
 - 本地执行 `npm run clean && npm run build` 通过。
 - 升级 GitHub Pages workflow，使用 `actions/configure-pages@v5` 和 `actions/upload-pages-artifact@v4`。
 - 新增 `docs/deploy-maintenance.md`，记录首次上线、日常发布、分类标签、技术栈地图、主题和依赖维护流程。
-- 当前还缺 GitHub 远端仓库和真实 GitHub 用户名，`_config.yml` 中的 `YOUR_GITHUB_USERNAME` 需要在正式推送前替换。
+- GitHub 远端仓库为 `https://github.com/xiaoajie9527/tech-blog.git`。
+- 将 `_config.yml` 的站点地址修正为 `https://xiaoajie9527.github.io/tech-blog`，避免误用 GitHub 仓库地址。

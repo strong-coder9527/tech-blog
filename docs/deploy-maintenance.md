@@ -22,14 +22,14 @@
 ```text
 仓库名：tech-blog
 默认分支：main
-上线地址：https://<你的 GitHub 用户名>.github.io/tech-blog/
+上线地址：https://xiaoajie9527.github.io/tech-blog/
 本地预览：http://localhost:4000/tech-blog/
 ```
 
 Hexo 相关配置在 `_config.yml`：
 
 ```yaml
-url: https://<你的 GitHub 用户名>.github.io/tech-blog
+url: https://xiaoajie9527.github.io/tech-blog
 root: /tech-blog/
 ```
 
@@ -108,24 +108,18 @@ tech-blog
 - Visibility：建议先用 Public，因为 GitHub Free 的 Pages 对公开仓库最直接。
 - 不要勾选自动创建 README、`.gitignore` 或 License，因为本地已经有。
 
-创建后 GitHub 会给出远端地址：
+当前仓库远端地址：
 
 ```text
-https://github.com/<你的 GitHub 用户名>/tech-blog.git
+https://github.com/xiaoajie9527/tech-blog.git
 ```
 
 ## 4. 填真实站点 URL
 
-打开 `_config.yml`，把：
+打开 `_config.yml`，确认：
 
 ```yaml
-url: https://YOUR_GITHUB_USERNAME.github.io/tech-blog
-```
-
-改成：
-
-```yaml
-url: https://<你的 GitHub 用户名>.github.io/tech-blog
+url: https://xiaoajie9527.github.io/tech-blog
 ```
 
 `root` 保持：
@@ -191,7 +185,11 @@ Settings -> Pages
 Source: GitHub Actions
 ```
 
-保存后，只要 `main` 分支有 push，`.github/workflows/pages.yml` 会自动：
+当前 GitHub 页面里选择 `GitHub Actions` 后通常会自动生效，不一定会出现单独的 Save 按钮。你看到下拉框已经显示 `GitHub Actions`，就说明这个选项已经选上了。
+
+这时不要点 GitHub 推荐的 `Configure` 模板，也不需要再创建新的 workflow。本仓库已经有自己的 `.github/workflows/pages.yml`。
+
+只要 `main` 分支有 push，`.github/workflows/pages.yml` 会自动：
 
 1. checkout 源码。
 2. 安装 Node.js。
@@ -213,7 +211,7 @@ Actions -> Pages
 成功后访问：
 
 ```text
-https://<你的 GitHub 用户名>.github.io/tech-blog/
+https://xiaoajie9527.github.io/tech-blog/
 ```
 
 第一次部署可能需要等几十秒到几分钟。
@@ -491,15 +489,14 @@ npm run build
 截至 2026-06-16，本机状态：
 
 - 本地构建通过。
-- Git 仓库还没有远端。
-- 本机没有 `gh` CLI。
-- SSH 登录 GitHub 当前不可用：`Permission denied (publickey)`。
-- `_config.yml` 里的 `url` 仍需要替换真实 GitHub 用户名。
+- Git 远端已经配置为 `https://github.com/xiaoajie9527/tech-blog.git`。
+- 本机没有 `gh` CLI，但可以用 Git HTTPS remote 推送。
+- SSH 登录 GitHub 当前不可用：`Permission denied (publickey)`，所以继续使用 HTTPS remote。
+- `_config.yml` 的 `url` 应为 `https://xiaoajie9527.github.io/tech-blog`。
 
 因此下一步需要：
 
-1. 在 GitHub 创建 `tech-blog` 仓库。
-2. 把仓库 URL 提供给我，或你自己执行 `git remote add origin ...`。
-3. 把 `_config.yml` 的 `YOUR_GITHUB_USERNAME` 替换成真实用户名。
-4. 提交并推送到 `main`。
-5. 在 GitHub Pages 设置里选择 `GitHub Actions`。
+1. 提交并推送当前修正。
+2. 在 GitHub 仓库的 `Actions` 标签页查看 `Pages` workflow 是否运行成功。
+3. 如果没有自动运行，可以进入 `Actions -> Pages -> Run workflow` 手动触发一次。
+4. 成功后访问 `https://xiaoajie9527.github.io/tech-blog/`。
