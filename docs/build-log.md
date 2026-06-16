@@ -65,3 +65,4 @@
 - 将 `_config.yml` 的站点地址修正为 `https://strong-coder9527.github.io/tech-blog`，避免误用 GitHub 仓库地址。
 - 移除 workflow 中首次部署容易失败的 `actions/configure-pages` 步骤，保留 Hexo 构建、Pages artifact 上传和 `deploy-pages` 部署。
 - 接入 Utterances 评论系统，文章页底部显示评论区，评论数据存储到 GitHub Issues。
+- 固定 GitHub Actions 构建时区为 `Asia/Shanghai`，避免文章 permalink 日期在云端 UTC 环境下前移一天。

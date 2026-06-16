@@ -200,6 +200,15 @@ Source: GitHub Actions
 5. 上传 `public/` 作为 Pages artifact。
 6. 部署到 GitHub Pages。
 
+workflow 里显式设置了：
+
+```yaml
+env:
+  TZ: Asia/Shanghai
+```
+
+这样 GitHub Actions 云端构建和本地构建会使用一致的日期路径，避免文章在本地是 `/2026/06/05/`，上线后变成 `/2026/06/04/`。
+
 ## 7. 确认上线成功
 
 推送后打开：
