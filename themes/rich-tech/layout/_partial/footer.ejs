@@ -7,6 +7,17 @@
       <% if (theme.copyright){ %>
         <%- render(theme.copyright, 'pug'); %>
       <% } %>
+      <% var busuanzi = theme.busuanzi || {}; %>
+      <% if (busuanzi.enable && (busuanzi.site_pv !== false || busuanzi.site_uv !== false)){ %>
+        <div class="site-stats">
+          <% if (busuanzi.site_pv !== false){ %>
+            <span id="busuanzi_container_site_pv" class="site-stat">总访问 <span id="busuanzi_value_site_pv">-</span> 次</span>
+          <% } %>
+          <% if (busuanzi.site_uv !== false){ %>
+            <span id="busuanzi_container_site_uv" class="site-stat">访客 <span id="busuanzi_value_site_uv">-</span> 人</span>
+          <% } %>
+        </div>
+      <% } %>
       &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
       <%= __('powered_by') %> <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>

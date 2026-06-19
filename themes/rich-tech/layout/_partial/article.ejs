@@ -27,6 +27,12 @@
       <% if (post.comments !== false && theme.utterances && theme.utterances.enable && theme.utterances.repo){ %>
         <a href="<%- url_for(post.path) %>#comments" class="article-comment-link"><span class="fa fa-comment">评论</span></a>
       <% } %>
+      <% var busuanzi = theme.busuanzi || {}; %>
+      <% if (!index && busuanzi.enable && busuanzi.page_pv !== false){ %>
+        <span id="busuanzi_container_page_pv" class="article-view-count">
+          <span class="fa fa-eye">阅读 <span id="busuanzi_value_page_pv">-</span></span>
+        </span>
+      <% } %>
       <% if (post.comments && theme.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><span class="fa fa-comment"><%= __('comment') %></span></a>
       <% } %>

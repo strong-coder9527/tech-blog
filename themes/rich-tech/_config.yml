@@ -68,6 +68,17 @@ utterances:
   label: comment
   theme: github-light
 
+# Busuanzi visitor/pageview statistics.
+# site_pv: total site pageviews
+# site_uv: total unique visitors
+# page_pv: current page/article pageviews
+busuanzi:
+  enable: true
+  script_url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  site_pv: true
+  site_uv: true
+  page_pv: true
+
 # ===============
 # Miscellaneous
 # ===============

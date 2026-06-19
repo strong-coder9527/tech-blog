@@ -437,7 +437,72 @@ Only select repositories -> strong-coder9527/tech-blog
 comments: false
 ```
 
-## 13. 依赖维护
+## 13. 访客统计和浏览量维护
+
+当前使用不蒜子做轻量统计：
+
+```text
+https://busuanzi.ibruce.info/
+```
+
+它不需要注册账号，也不需要后端数据库，适合静态博客先快速接上基础统计。
+
+当前会显示三类数字：
+
+- 站点总访问量：全站 PV。
+- 站点访客数：全站 UV。
+- 单篇文章阅读量：当前页面 PV。
+
+配置位置：
+
+```text
+_config.rich-tech.yml
+themes/rich-tech/_config.yml
+themes/rich-tech/layout/_partial/busuanzi.ejs
+themes/rich-tech/layout/_partial/footer.ejs
+themes/rich-tech/layout/_partial/article.ejs
+```
+
+当前配置：
+
+```yaml
+busuanzi:
+  enable: true
+  script_url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  site_pv: true
+  site_uv: true
+  page_pv: true
+```
+
+字段含义：
+
+- `enable`：总开关。
+- `site_pv`：是否在页脚显示全站总访问量。
+- `site_uv`：是否在页脚显示全站访客数。
+- `page_pv`：是否在文章页显示当前页面阅读量。
+- `script_url`：统计脚本地址。
+
+如果只想关闭单篇文章阅读量：
+
+```yaml
+busuanzi:
+  page_pv: false
+```
+
+如果想完全关闭统计：
+
+```yaml
+busuanzi:
+  enable: false
+```
+
+注意：
+
+- 不蒜子只适合展示基础数字，没有后台仪表盘。
+- 统计数字由第三方脚本异步加载，本地预览或浏览器插件拦截时可能显示 `-`。
+- 如果以后需要来源分析、国家地区、访问路径、趋势图，可以升级到 Umami、GoatCounter 或 Google Analytics。
+
+## 14. 依赖维护
 
 查看过期依赖：
 
@@ -468,7 +533,7 @@ npm run build
 
 确认 `package-lock.json` 变化后提交。
 
-## 14. 常见故障
+## 15. 常见故障
 
 ### 页面 404
 
@@ -534,7 +599,16 @@ npm run build
 - `utterances.repo` 是否是 `strong-coder9527/tech-blog`。
 - 文章 front matter 是否写了 `comments: false`。
 
-## 15. 建议维护节奏
+### 浏览量或访客数一直显示 `-`
+
+检查：
+
+- `_config.rich-tech.yml` 里 `busuanzi.enable` 是否是 `true`。
+- 浏览器是否拦截了 `busuanzi.ibruce.info` 的脚本请求。
+- 是否正在本地离线预览，第三方脚本没有加载成功。
+- 页面 HTML 里是否有 `busuanzi_value_site_pv`、`busuanzi_value_site_uv` 或 `busuanzi_value_page_pv`。
+
+## 16. 建议维护节奏
 
 每次写文章：
 

@@ -26,3 +26,10 @@ utterances:
   issue_term: pathname
   label: comment
   theme: github-light
+
+busuanzi:
+  enable: true
+  script_url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  site_pv: true
+  site_uv: true
+  page_pv: true
