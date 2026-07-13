@@ -502,7 +502,51 @@ busuanzi:
 - 统计数字由第三方脚本异步加载，本地预览或浏览器插件拦截时可能显示 `-`。
 - 如果以后需要来源分析、国家地区、访问路径、趋势图，可以升级到 Umami、GoatCounter 或 Google Analytics。
 
-## 14. 依赖维护
+## 14. 外部视频嵌入维护
+
+当前博客已经在主题样式里支持响应式外部视频容器：
+
+```text
+themes/rich-tech/source/css/_partial/rich-polish.styl
+```
+
+日常写文章时，推荐使用 `.video-wrap`：
+
+```html
+<div class="video-wrap">
+  <iframe
+    src="https://player.bilibili.com/player.html?bvid=BVxxxxxx&page=1&autoplay=0"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+YouTube：
+
+```html
+<div class="video-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="YouTube video player"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+可选说明文字：
+
+```html
+<p class="video-caption">视频：这是一段操作演示。</p>
+```
+
+维护原则：
+
+- 外部平台视频只嵌入 iframe，不把大视频提交到仓库。
+- B 站链接建议加 `autoplay=0`，不要默认自动播放。
+- 如果视频在手机端比例异常，优先检查外面是否包了 `.video-wrap`。
+- 如果视频无法加载，优先检查平台是否允许第三方嵌入、浏览器是否拦截 iframe。
+
+## 15. 依赖维护
 
 查看过期依赖：
 
@@ -533,7 +577,7 @@ npm run build
 
 确认 `package-lock.json` 变化后提交。
 
-## 15. 常见故障
+## 16. 常见故障
 
 ### 页面 404
 
@@ -608,7 +652,15 @@ npm run build
 - 是否正在本地离线预览，第三方脚本没有加载成功。
 - 页面 HTML 里是否有 `busuanzi_value_site_pv`、`busuanzi_value_site_uv` 或 `busuanzi_value_page_pv`。
 
-## 16. 建议维护节奏
+### 外部视频显示比例不对
+
+检查：
+
+- iframe 外面是否包了 `<div class="video-wrap">...</div>`。
+- iframe 是否写了固定 `width` 或 `height`，如果写了也可以保留，但比例主要由 `.video-wrap` 控制。
+- 视频平台提供的是不是 `embed`/`player` 地址，而不是普通观看页地址。
+
+## 17. 建议维护节奏
 
 每次写文章：
 
@@ -633,7 +685,7 @@ npm run build
 - 检查图片和外链是否失效。
 - 备份 Obsidian 到博客的来源链路。
 
-## 16. 当前机器状态
+## 18. 当前机器状态
 
 截至 2026-06-16，本机状态：
 

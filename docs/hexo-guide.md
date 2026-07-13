@@ -715,7 +715,66 @@ source/images/hexo-flow.png
 
 后续如果开启 Hexo 的 `post_asset_folder: true`，也可以让每篇文章有自己的资源目录。但这会影响 Obsidian 同步规则，所以先不急着开。
 
-## 8. `_config.yml` 怎么理解
+## 8. 外部视频怎么嵌入
+
+当前博客支持直接在 Markdown 文章里写 HTML。推荐统一用 `.video-wrap` 包一层，这样桌面端和手机端都会保持 16:9 比例，不会出现 iframe 被压扁或横向溢出。
+
+### B 站视频
+
+在 B 站视频页复制 `BV` 号，然后写：
+
+```html
+<div class="video-wrap">
+  <iframe
+    src="https://player.bilibili.com/player.html?bvid=BVxxxxxx&page=1&autoplay=0"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+说明：
+
+- `bvid=BVxxxxxx`：替换成真实 BV 号。
+- `page=1`：分 P 视频的第几 P。
+- `autoplay=0`：不自动播放，避免打扰读者。
+
+### YouTube 视频
+
+把 YouTube 链接里的视频 ID 填到 `/embed/` 后面：
+
+```html
+<div class="video-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="YouTube video player"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+### 通用 iframe
+
+其他平台如果提供 iframe 嵌入代码，也可以只保留 `iframe`，外面套 `.video-wrap`：
+
+```html
+<div class="video-wrap">
+  <iframe src="外部平台提供的嵌入地址" allowfullscreen></iframe>
+</div>
+```
+
+如果要写说明文字：
+
+```html
+<p class="video-caption">视频：OpenWrt 扩容操作录屏。</p>
+```
+
+建议：
+
+- 大视频优先放外部平台，不要直接提交到 GitHub 仓库。
+- 本地只适合放很短的 `.mp4` 演示片段。
+- 外部视频嵌入依赖第三方平台，读者网络环境会影响加载速度。
+
+## 9. `_config.yml` 怎么理解
 
 当前主配置在：
 
@@ -789,7 +848,7 @@ theme: landscape
 
 当前先使用 Hexo 默认的 `landscape` 主题。等内容路线稳定以后，再换更适合技术博客的主题。
 
-## 9. 主题怎么配置
+## 10. 主题怎么配置
 
 当前主题配置在：
 
@@ -820,7 +879,7 @@ menu:
 
 不同主题的配置项不一样。换主题时，一般要看主题自己的 README。
 
-## 10. GitHub Pages 发布流程
+## 11. GitHub Pages 发布流程
 
 当前项目使用 GitHub Actions 发布，不需要手动提交 `public/`。
 
@@ -860,7 +919,7 @@ url: https://用户名.github.io/真实仓库名
 root: /真实仓库名/
 ```
 
-## 11. 一套推荐的日常写作流程
+## 12. 一套推荐的日常写作流程
 
 新建草稿：
 
@@ -898,7 +957,7 @@ git push origin main
 
 GitHub Actions 自动发布。
 
-## 12. 推荐的写作规范
+## 13. 推荐的写作规范
 
 文件名：
 
@@ -957,7 +1016,7 @@ title: Frida 安卓逆向使用教程：从入门到高阶
 最后得到什么，后续怎么复用。
 ```
 
-## 13. 和 Obsidian 联动的方向
+## 14. 和 Obsidian 联动的方向
 
 Hexo 和 Obsidian 都以 Markdown 为核心，所以天然适合联动。但需要处理几个差异：
 
@@ -1005,7 +1064,7 @@ tags:
 
 然后后续用脚本或 Hermes Agent 读取 `publish: true` 的笔记，把它们同步到 Hexo。
 
-## 14. Hermes Agent 可以做什么
+## 15. Hermes Agent 可以做什么
 
 后面可以让 Hermes Agent 做这些日常管理：
 
@@ -1020,7 +1079,7 @@ tags:
 
 第一阶段不要急着自动化太多。先形成稳定的写作目录和文章格式，自动化才会比较顺。
 
-## 15. 常见问题
+## 16. 常见问题
 
 ### 页面样式丢失
 
@@ -1083,7 +1142,7 @@ db.json
 
 可以。当前项目已经生成了中文分类 `技术随笔`。如果你追求 URL 更简洁，可以后续在 `_config.yml` 里配置 `category_map` 和 `tag_map`。
 
-## 16. 第一阶段路线图
+## 17. 第一阶段路线图
 
 现在已经完成：
 
@@ -1104,7 +1163,7 @@ db.json
 6. 设计 Obsidian 同步规则。
 7. 再接 Hermes Agent 做维护。
 
-## 17. 参考资料
+## 18. 参考资料
 
 - Hexo 官方文档：https://hexo.io/docs/
 - Hexo 命令说明：https://hexo.io/docs/commands
