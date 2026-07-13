@@ -58,6 +58,7 @@ Agent 应该完成：
 7. 脱敏。
 8. 构建验证。
 9. 提交并推送。
+10. 等 GitHub Actions 完成后做线上检查。
 
 ## 3. 手动导入脚本
 
@@ -79,6 +80,18 @@ npm run blog:prepare -- \
 npm run blog:scan
 npm run clean
 npm run build
+```
+
+发布后检查线上页面：
+
+```bash
+npm run blog:check-online
+```
+
+也可以只检查指定路径：
+
+```bash
+npm run blog:check-online -- 2026/06/05/2026-06-05-openwrt-extroot-expansion/ search/ atom.xml
 ```
 
 ## 4. 敏感信息扫描

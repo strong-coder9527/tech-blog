@@ -73,29 +73,51 @@ index_generator:
 default_category: 技术随笔
 category_map:
   技术随笔: tech-notes
+  安全研究: security-research
   逆向: reverse-engineering
+  抓包: packet-capture
+  漏洞分析: vulnerability-analysis
   安卓逆向: android-reverse-engineering
   工具: tools
   运维: operations
+  运维与网络: ops-network
   软路由: soft-router
   PassWall: passwall
   OpenWrt: openwrt
+  DNS: dns
+  Linux: linux
+  AI / Agent: ai-agent
+  Codex: codex
+  自动化工作流: automation-workflow
+  工程实践: engineering-practice
+  GitHub Pages: github-pages
+  前端工程: frontend-engineering
+  脚本工具: script-tools
+  知识系统: knowledge-system
+  Obsidian: obsidian
+  写作流: writing-workflow
+  笔记整理: note-organizing
   IOS逆向: IOS逆向
   Frida: frida
 tag_map:
   GitHub Pages: github-pages
   Hermes Agent: hermes-agent
+  Codex: codex
   OpenWrt: openwrt
   Extroot: extroot
   磁盘扩容: disk-expansion
   PassWall: passwall
+  Linux: linux
   IOS逆向: IOS逆向
   Frida: frida
   DNS: dns
+  ADB: adb
   WebRTC: webrtc
   节点巡检: node-probe
   链路测试: link-test
   故障排查: troubleshooting
+  自动化工作流: automation-workflow
+  写作流: writing-workflow
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta

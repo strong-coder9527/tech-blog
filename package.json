@@ -7,6 +7,7 @@
     "blog:prepare": "node tools/blog-agent/prepare-post.mjs",
     "blog:scan": "node tools/blog-agent/sensitive-scan.mjs source/_posts source/about source/tech-stack",
     "blog:scan:strict": "node tools/blog-agent/sensitive-scan.mjs --strict",
+    "blog:check-online": "node tools/blog-agent/check-online.mjs",
     "blog:verify": "npm run blog:scan && npm run clean && npm run build",
     "clean": "hexo clean",
     "deploy": "hexo deploy",

@@ -546,7 +546,99 @@ YouTube：
 - 如果视频在手机端比例异常，优先检查外面是否包了 `.video-wrap`。
 - 如果视频无法加载，优先检查平台是否允许第三方嵌入、浏览器是否拦截 iframe。
 
-## 15. 依赖维护
+## 15. 搜索、RSS、Sitemap 和目录维护
+
+当前博客已经内置静态搜索和基础 SEO 文件，不依赖外部服务。
+
+构建时自动生成：
+
+```text
+search.json
+atom.xml
+sitemap.xml
+robots.txt
+```
+
+对应实现：
+
+```text
+scripts/search-index.js
+scripts/seo-files.js
+source/search/index.md
+themes/rich-tech/source/js/search.js
+themes/rich-tech/layout/_partial/toc.ejs
+```
+
+搜索页：
+
+```text
+/search/
+```
+
+RSS：
+
+```text
+/atom.xml
+```
+
+Sitemap：
+
+```text
+/sitemap.xml
+```
+
+文章目录 TOC 默认在文章页显示。当文章标题层级少于 3 个时不会显示目录。单篇文章如果不想显示目录，在 front matter 里加：
+
+```yaml
+toc: false
+```
+
+维护原则：
+
+- 新文章正常写 Markdown 标题，Hexo 会自动生成锚点，TOC 会自动读取。
+- 搜索索引来自文章标题、正文、分类和标签。
+- 不要手动编辑 `public/search.json`、`public/atom.xml`、`public/sitemap.xml`，它们都是构建产物。
+
+## 16. 发布后线上检查
+
+推送并等待 GitHub Actions 成功后，运行：
+
+```bash
+npm run blog:check-online
+```
+
+默认检查：
+
+- 首页
+- 搜索页
+- `search.json`
+- `atom.xml`
+- `sitemap.xml`
+- `robots.txt`
+- 技术栈页
+- 分类页
+- 标签页
+
+也可以检查指定路径：
+
+```bash
+npm run blog:check-online -- search/ atom.xml 2026/06/05/2026-06-05-openwrt-extroot-expansion/
+```
+
+如果只是检查本地构建产物，可以先在 `public/` 起静态服务：
+
+```bash
+cd public
+python3 -m http.server 4173
+```
+
+然后在项目根目录运行：
+
+```bash
+npm run blog:check-online -- --base-url http://127.0.0.1:4173/
+```
+
+## 17. 依赖维护
 
 查看过期依赖：
 
@@ -577,7 +669,7 @@ npm run build
 
 确认 `package-lock.json` 变化后提交。
 
-## 16. 常见故障
+## 18. 常见故障
 
 ### 页面 404
 
@@ -660,7 +752,23 @@ npm run build
 - iframe 是否写了固定 `width` 或 `height`，如果写了也可以保留，但比例主要由 `.video-wrap` 控制。
 - 视频平台提供的是不是 `embed`/`player` 地址，而不是普通观看页地址。
 
-## 17. 建议维护节奏
+### 搜索没有结果
+
+检查：
+
+- `npm run build` 是否生成了 `public/search.json`。
+- 浏览器控制台是否能加载 `/tech-blog/search.json`。
+- 文章是否在 `source/_posts/`，并且不是草稿。
+
+### RSS、Sitemap 或 robots 地址不对
+
+检查：
+
+- `_config.yml` 的 `url` 是否是 `https://strong-coder9527.github.io/tech-blog`。
+- 不要在 `scripts/seo-files.js` 里重复拼接 `root`。
+- 构建后检查 `public/atom.xml` 和 `public/sitemap.xml` 是否出现重复 `/tech-blog/tech-blog/`。
+
+## 19. 建议维护节奏
 
 每次写文章：
 
@@ -682,10 +790,10 @@ npm run build
 
 - 整理一篇总结或索引文章。
 - 检查旧文章是否需要更新 `updated`。
-- 检查图片和外链是否失效。
+- 检查图片、外链、搜索、RSS 和 Sitemap 是否正常。
 - 备份 Obsidian 到博客的来源链路。
 
-## 18. 当前机器状态
+## 20. 当前机器状态
 
 截至 2026-06-16，本机状态：
 

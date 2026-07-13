@@ -209,6 +209,36 @@ if sidebar and sidebar isnt bottom
   color: #71808c
   font-size: 14px
 
+.article-toc
+  margin: 22px 30px 6px
+  padding: 16px 18px
+  border: 1px solid #e2e8ef
+  border-radius: 10px
+  background: #f8fbfc
+
+.article-toc-title
+  margin-bottom: 8px
+  color: #2d3742
+  font-weight: 700
+
+.article-toc-list
+  margin: 0
+  padding-left: 18px
+  line-height: 1.7
+
+.article-toc-item
+  margin: 2px 0
+  color: #9aa6b2
+  a
+    color: #0b7fab
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+.article-toc-level-3
+  margin-left: 18px
+  font-size: 14px
+
 .article-date,
 .article-category-link,
 .archive-year,
@@ -262,6 +292,65 @@ if sidebar and sidebar isnt bottom
 
 .utterances-frame
   color-scheme: light
+
+.site-search-page
+  margin-top: 4px
+
+.site-search-lead
+  color: #52626f
+  font-size: 15px
+  line-height: 1.8
+
+.site-search-box
+  display: flex
+  gap: 10px
+  margin: 18px 0
+
+.site-search-input
+  flex: 1
+  min-width: 0
+  border: 1px solid #d8e0e8
+  border-radius: 10px
+  padding: 12px 14px
+  color: #2d3742
+  font-size: 16px
+  outline: none
+  &:focus
+    border-color: #0b7fab
+    box-shadow: 0 0 0 3px rgba(11, 127, 171, 0.12)
+
+.site-search-clear
+  border: 0
+  border-radius: 10px
+  padding: 0 16px
+  background: #edf5f8
+  color: #0b7fab
+  font-weight: 600
+  cursor: pointer
+  &:hover
+    background: #0b7fab
+    color: #fff
+
+.site-search-status
+  margin: 8px 0 16px
+  color: #71808c
+  font-size: 14px
+
+.site-search-result
+  border-top: 1px solid #e6ebf0
+  padding: 16px 0
+  &:first-child
+    border-top: 0
+  h3
+    margin: 0 0 6px !important
+    font-size: 19px
+  p
+    margin: 8px 0 0 !important
+    color: #52626f
+
+.site-search-result-meta
+  color: #7b8792
+  font-size: 13px
 
 .stack-map
   margin-top: 8px
@@ -515,7 +604,19 @@ if sidebar and sidebar isnt bottom
     grid-template-columns: 1fr
     gap: 12px
 
+  .site-search-box
+    display: block
+
+  .site-search-clear
+    margin-top: 10px
+    width: 100%
+    height: 42px
+
   .article-footer
+    margin-left: 20px
+    margin-right: 20px
+
+  .article-toc
     margin-left: 20px
     margin-right: 20px
 

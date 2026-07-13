@@ -30,7 +30,10 @@
         <a class="nav-icon nav-search-btn" title="<%= __('search') %>"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <%- search_form({button: '&#xF002;', text: __('search')}) %>
+        <form class="search-form" action="<%- url_for('search/') %>" method="get">
+          <input type="search" name="q" class="search-form-input" placeholder="<%= __('search') %>" autocomplete="off">
+          <button type="submit" class="search-form-submit"><span class="fa fa-search"></span></button>
+        </form>
       </div>
     </div>
   </div>

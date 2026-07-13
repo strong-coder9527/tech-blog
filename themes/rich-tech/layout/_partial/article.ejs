@@ -10,6 +10,9 @@
         <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
     <% } %>
+    <% if (!index && post.layout === 'post' && post.toc !== false){ %>
+      <%- partial('toc', {post: post}) %>
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>

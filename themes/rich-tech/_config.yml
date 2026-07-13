@@ -8,6 +8,7 @@ menu:
   归档: /archives
   分类: /categories
   标签: /tags
+  搜索: /search
   关于: /about
 # RSS link
 rss: /atom.xml

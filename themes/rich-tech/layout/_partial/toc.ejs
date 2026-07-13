@@ -1,0 +1,39 @@
+<%
+function stripTags(input) {
+  return String(input || '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .trim();
+}
+
+var html = String(post.content || '');
+var headings = [];
+var match;
+var headingRe = /<h([23])\s+[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
+while ((match = headingRe.exec(html)) !== null) {
+  var title = stripTags(match[3]);
+  if (!title) continue;
+  headings.push({
+    level: Number(match[1]),
+    id: match[2],
+    title: title
+  });
+}
+%>
+<% if (headings.length >= 3){ %>
+  <nav class="article-toc" aria-label="文章目录">
+    <div class="article-toc-title">本文目录</div>
+    <ol class="article-toc-list">
+      <% headings.forEach(function(item){ %>
+        <li class="article-toc-item article-toc-level-<%= item.level %>">
+          <a href="#<%- item.id %>"><%= item.title %></a>
+        </li>
+      <% }) %>
+    </ol>
+  </nav>
+<% } %>
