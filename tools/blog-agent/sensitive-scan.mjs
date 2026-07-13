@@ -16,7 +16,7 @@ function parseArgs(argv) {
 
 function usage() {
   console.log(`Usage:
-  node scripts/blog-agent/sensitive-scan.mjs [--strict] <path...>
+  node tools/blog-agent/sensitive-scan.mjs [--strict] <path...>
 
 Scans text files for secrets and publish-risk data.
 Use <!-- blog-scan-ignore-line --> to suppress one intentional example line.
