@@ -74,6 +74,8 @@ default_category: 技术随笔
 category_map:
   技术随笔: tech-notes
   逆向: reverse-engineering
+  安卓逆向: android-reverse-engineering
+  工具: tools
   运维: operations
   软路由: soft-router
   PassWall: passwall
